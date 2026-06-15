@@ -486,6 +486,64 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
+/* Quiz Overview */
+.quiz-overview {
+    text-align: left;
+    margin: 2rem 0;
+}
+
+.quiz-overview h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.quiz-overview-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    background: var(--cream);
+    border-left: 3px solid var(--beige-dark);
+}
+
+.quiz-overview-item.correct {
+    border-left-color: #4caf50;
+}
+
+.quiz-overview-item.wrong {
+    border-left-color: #e57373;
+}
+
+.quiz-overview-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.quiz-overview-content {
+    flex: 1;
+}
+
+.quiz-overview-q {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.quiz-overview-a {
+    font-size: 0.9rem;
+    color: var(--blue-dark);
+}
+
+.quiz-overview-correct {
+    font-size: 0.85rem;
+    color: #4caf50;
+    font-style: italic;
+    margin-top: 0.25rem;
+}
+
 /* Quiz input for open questions */
 .quiz-input {
     width: 100%;

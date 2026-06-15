@@ -241,7 +241,7 @@ function showResult() {
     const resultEl = document.getElementById('quiz-result');
     resultEl.hidden = false;
 
-    const multipleCount = questions.filter(q => q.type === 'multiple').length;
+    const multipleCount = questions.filter(q => q.type === 'multiple' && q.correct !== null).length;
     document.getElementById('quiz-score').textContent = `${score} / ${multipleCount} goed!`;
 
     let message;
@@ -253,6 +253,28 @@ function showResult() {
         message = 'Hmm, misschien moet je wat vaker langsgaan bij Ruby & Tobias 😄';
     }
     document.getElementById('quiz-message').textContent = message;
+
+    // Build overview of all answers
+    let overviewHtml = '<div class="quiz-overview"><h3>Overzicht</h3>';
+    quizAnswers.forEach((item, i) => {
+        const q = questions[i];
+        const correctAnswer = (q.type === 'multiple' && q.correct !== null) ? q.options[q.correct] : null;
+        const isCorrect = correctAnswer && item.answer === correctAnswer;
+        const icon = correctAnswer ? (isCorrect ? '✓' : '✗') : '💬';
+        
+        overviewHtml += `<div class="quiz-overview-item ${correctAnswer ? (isCorrect ? 'correct' : 'wrong') : ''}">`;
+        overviewHtml += `<span class="quiz-overview-icon">${icon}</span>`;
+        overviewHtml += `<div class="quiz-overview-content">`;
+        overviewHtml += `<p class="quiz-overview-q"><strong>${q.forWho}:</strong> ${item.question}</p>`;
+        overviewHtml += `<p class="quiz-overview-a">Antwoord: ${item.answer}</p>`;
+        if (correctAnswer && !isCorrect) {
+            overviewHtml += `<p class="quiz-overview-correct">Juiste antwoord: ${correctAnswer}</p>`;
+        }
+        overviewHtml += `</div></div>`;
+    });
+    overviewHtml += '</div>';
+    
+    document.getElementById('quiz-overview-container').innerHTML = overviewHtml;
 
     // Store quiz answers
     localStorage.setItem('babyshower-quiz', JSON.stringify(quizAnswers));
