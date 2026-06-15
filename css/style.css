@@ -105,11 +105,12 @@ h2 {
 .hero {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--beige) 0%, var(--blue-light) 50%, var(--beige) 100%);
     text-align: center;
-    padding: 2rem;
+    padding: 6rem 2rem 2rem;
 }
 
 .hero-content {
@@ -562,6 +563,29 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* ===== Page Navigation ===== */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.hero.active {
+    display: flex;
+}
+
+.page:not(.hero) {
+    padding-top: 5rem;
+    min-height: 100vh;
+}
+
+.nav-links a.active {
+    color: var(--blue-primary);
+    font-weight: 600;
 }
 
 /* ===== Mobile ===== */

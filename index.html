@@ -24,7 +24,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero page active" data-page="home">
         <div class="hero-content">
             <p class="hero-subtitle">You're invited to the</p>
             <h1 class="hero-title">Babyshower</h1>
@@ -32,10 +32,8 @@
             <div class="hero-icon">🍼</div>
             <p class="hero-date">3 juli 2026</p>
         </div>
-    </section>
-
-    <!-- Countdown -->
-    <section class="countdown-section">
+        <!-- Countdown -->
+        <div class="countdown-section">
         <h2>Nog even afwachten...</h2>
         <div class="countdown" id="countdown">
             <div class="countdown-item">
@@ -55,10 +53,11 @@
                 <span class="countdown-label">sec</span>
             </div>
         </div>
+        </div>
     </section>
 
     <!-- Info Section -->
-    <section id="info" class="info-section">
+    <section id="info" class="info-section page" data-page="info">
         <h2>De details</h2>
         <div class="info-cards">
             <div class="info-card">
@@ -82,7 +81,7 @@
     </section>
 
     <!-- RSVP Section -->
-    <section id="rsvp" class="rsvp-section">
+    <section id="rsvp" class="rsvp-section page" data-page="rsvp">
         <h2>Ben je erbij?</h2>
         <p class="section-subtitle">Laat even weten of je komt!</p>
         <form class="rsvp-form" id="rsvp-form">
@@ -118,7 +117,7 @@
     </section>
 
     <!-- Quiz Section -->
-    <section id="quiz" class="quiz-section">
+    <section id="quiz" class="quiz-section page" data-page="quiz">
         <h2>Baby Quiz 👶</h2>
         <p class="section-subtitle">Test je kennis en raad mee!</p>
         <div class="quiz-container" id="quiz-container">
@@ -144,7 +143,7 @@
     </section>
 
     <!-- Foto Section -->
-    <section id="fotos" class="foto-section">
+    <section id="fotos" class="foto-section page" data-page="fotos">
         <h2>Foto's</h2>
         <p class="section-subtitle">Deel je mooiste foto's van de dag!</p>
         <div class="foto-upload">

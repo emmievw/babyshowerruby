@@ -280,15 +280,38 @@ fotoInput.addEventListener('change', (e) => {
 
 loadPhotos();
 
-// ===== Smooth scroll offset for fixed navbar =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offset = 70;
-            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top, behavior: 'smooth' });
+// ===== Page Navigation =====
+function navigateTo(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    // Show target page
+    const target = document.querySelector(`[data-page="${pageId}"]`);
+    if (target) {
+        target.classList.add('active');
+    }
+
+    // Update active nav link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${pageId}`) {
+            link.classList.add('active');
         }
     });
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const pageId = this.getAttribute('href').substring(1);
+        navigateTo(pageId);
+    });
 });
+
+// Set Home as active on load
+document.querySelector('.nav-links a[href="#home"]').classList.add('active');
