@@ -105,12 +105,14 @@ h2 {
 .hero {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 4rem;
     background: linear-gradient(135deg, var(--beige) 0%, var(--blue-light) 50%, var(--beige) 100%);
     text-align: center;
     padding: 6rem 2rem 2rem;
+    flex-wrap: wrap;
 }
 
 .hero-content {
@@ -162,6 +164,15 @@ h2 {
     line-height: 1.7;
 }
 
+.hero-credits {
+    max-width: 500px;
+    margin: 0.5rem auto 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-style: italic;
+    opacity: 0.7;
+}
+
 .hero-buttons {
     display: flex;
     gap: 1rem;
@@ -187,9 +198,11 @@ h2 {
 
 /* ===== Countdown ===== */
 .countdown-section {
-    padding: 4rem 2rem;
+    padding: 2.5rem;
     background: var(--white);
     text-align: center;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 .countdown {
@@ -711,6 +724,11 @@ footer {
 
     .nav-toggle {
         display: block;
+    }
+
+    .hero {
+        flex-direction: column;
+        gap: 2rem;
     }
 
     .hero-title {
