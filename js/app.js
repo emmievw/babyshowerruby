@@ -247,39 +247,6 @@ function showResult() {
 // Start quiz on page load
 startQuiz();
 
-// ===== Foto Upload =====
-const fotoInput = document.getElementById('foto-input');
-const fotoGrid = document.getElementById('foto-grid');
-
-// Load existing photos
-function loadPhotos() {
-    const photos = JSON.parse(localStorage.getItem('babyshower-photos') || '[]');
-    fotoGrid.innerHTML = '';
-    photos.forEach((src, index) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = `Foto ${index + 1}`;
-        fotoGrid.appendChild(img);
-    });
-}
-
-fotoInput.addEventListener('change', (e) => {
-    const files = Array.from(e.target.files);
-    const photos = JSON.parse(localStorage.getItem('babyshower-photos') || '[]');
-
-    files.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            photos.push(event.target.result);
-            localStorage.setItem('babyshower-photos', JSON.stringify(photos));
-            loadPhotos();
-        };
-        reader.readAsDataURL(file);
-    });
-});
-
-loadPhotos();
-
 // ===== Page Navigation =====
 function navigateTo(pageId) {
     // Hide all pages

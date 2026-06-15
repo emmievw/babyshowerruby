@@ -18,12 +18,11 @@
             <a href="#info">Info</a>
             <a href="#rsvp">RSVP</a>
             <a href="#quiz">Quiz</a>
-            <a href="#fotos">Foto's</a>
         </div>
         <button class="nav-toggle" aria-label="Menu">MENU</button>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Home / Intro -->
     <section id="home" class="hero page active" data-page="home">
         <div class="hero-content">
             <p class="hero-subtitle">You're invited to the</p>
@@ -31,28 +30,33 @@
             <p class="hero-names">Ruby & Tobias</p>
             <div class="hero-icon">🍼</div>
             <p class="hero-date">3 juli 2026</p>
+            <p class="hero-intro">Er is een kleine op komst! Kom gezellig vieren met ons op vrijdag 3 juli. We starten om 16:00 met hapjes, drankjes en spelletjes — en later schuiven we aan voor het eten.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-light" onclick="navigateTo('info')">Bekijk de details</button>
+                <button class="btn" onclick="navigateTo('rsvp')">RSVP</button>
+            </div>
         </div>
         <!-- Countdown -->
         <div class="countdown-section">
-        <h2>Nog even afwachten...</h2>
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">00</span>
-                <span class="countdown-label">dagen</span>
+            <h2>Nog even afwachten...</h2>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">dagen</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">uur</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">min</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">sec</span>
+                </div>
             </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">00</span>
-                <span class="countdown-label">uur</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">00</span>
-                <span class="countdown-label">min</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">00</span>
-                <span class="countdown-label">sec</span>
-            </div>
-        </div>
         </div>
     </section>
 
@@ -140,22 +144,6 @@
             <p id="quiz-message"></p>
             <button class="btn" onclick="startQuiz()">Opnieuw spelen</button>
         </div>
-    </section>
-
-    <!-- Foto Section -->
-    <section id="fotos" class="foto-section page" data-page="fotos">
-        <h2>Foto's</h2>
-        <p class="section-subtitle">Deel je mooiste foto's van de dag!</p>
-        <div class="foto-upload">
-            <label for="foto-input" class="foto-upload-btn">
-                📷 Foto uploaden
-            </label>
-            <input type="file" id="foto-input" accept="image/*" multiple hidden>
-        </div>
-        <div class="foto-grid" id="foto-grid">
-            <!-- Filled by JS -->
-        </div>
-        <p class="foto-note" id="foto-note">Foto's worden lokaal opgeslagen in je browser.</p>
     </section>
 
     <!-- Footer -->
