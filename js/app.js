@@ -67,60 +67,70 @@ if (existingRsvp.length > 0) {
 const questions = [
     {
         type: 'multiple',
+        forWho: 'Vraag voor iedereen',
         question: 'Hoe lang zijn Ruby en Tobias al samen?',
         options: ['2 jaar', '4 jaar', '6 jaar', '8 jaar'],
         correct: 1
     },
     {
         type: 'multiple',
+        forWho: 'Vraag voor iedereen',
         question: 'Wat wordt het? 👶',
         options: ['Een meisje 🎀', 'Een jongetje 💙', 'Een tweeling 👯', 'Het is nog een verrassing'],
         correct: 1
     },
     {
         type: 'multiple',
+        forWho: 'Vraag voor iedereen',
         question: 'Hoe denk je dat de baby gaat heten? 🤔',
         options: ['Ruben', 'Tobey', 'Roan', 'Tygo'],
-        correct: null // No right answer
+        correct: null
     },
     {
         type: 'multiple',
-        question: 'Wat is Ruby\'s guilty pleasure snack tijdens de zwangerschap?',
+        forWho: 'Vraag voor Ruby',
+        question: 'Wat is je guilty pleasure snack tijdens de zwangerschap?',
         options: ['Augurken met pindakaas', 'Nutella uit de pot', 'Zure matjes', 'Chips met ijs'],
         correct: 1
     },
     {
         type: 'multiple',
+        forWho: 'Vraag voor iedereen',
         question: 'Wie gaat er het vaakst oppassen denk je?',
         options: ['Oma', 'Opa', 'Tante Francis', 'Oom Rutger'],
         correct: 2
     },
     {
         type: 'multiple',
-        question: 'Tobias als vader — wat gaat zijn signature move worden?',
+        forWho: 'Vraag voor Tobias',
+        question: 'Wat gaat jouw signature move als vader worden?',
         options: ['De baby overal mee naartoe nemen', 'Matching outfits', 'Elke dag 100 foto\'s maken', 'Alles baby-proofen wat niet nodig is'],
         correct: 2
     },
     {
         type: 'multiple',
-        question: 'Tobias wil weten: gaat de kleine later Rocket League leuk vinden? 🚗⚽',
+        forWho: 'Vraag voor Tobias',
+        question: 'Gaat de kleine later Rocket League leuk vinden? 🚗⚽',
         options: ['Sowieso, dat zit in de genen', 'Nee, hij wordt een FIFA-kind', 'Alleen als ie bij papa op schoot mag', 'Hij gaat het haten (sorry Tobias)'],
         correct: 0
     },
     {
         type: 'multiple',
+        forWho: 'Vraag voor Tobias',
         question: 'Van welke voetbalclub wordt de baby later fan? ⚽',
         options: ['Ajax', 'Feyenoord', 'PSV', 'AZ'],
         correct: null
     },
     {
         type: 'multiple',
-        question: '🎯 Speciaal voor Rutger & Francis: wat gaan JULLIE de baby als eerste leren?',
+        forWho: 'Vraag voor Rutger & Francis',
+        question: 'Wat gaan jullie de baby als eerste leren?',
         options: ['\"Oom Rutger\" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
         correct: 3
     },
     {
         type: 'open',
+        forWho: 'Vraag voor iedereen',
         question: 'Geef Ruby & Tobias je beste (of slechtste) opvoedtip! 😂',
         answer: null
     }
@@ -150,7 +160,7 @@ function showQuestion() {
     progressText.textContent = `Vraag ${currentQuestion + 1} van ${questions.length}`;
     progressFill.style.width = `${((currentQuestion) / questions.length) * 100}%`;
 
-    questionEl.textContent = q.question;
+    questionEl.innerHTML = `<span class="quiz-for-who">${q.forWho}</span>${q.question}`;
     optionsEl.innerHTML = '';
     nextBtn.hidden = true;
 

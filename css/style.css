@@ -410,6 +410,17 @@ h2 {
     color: var(--text-dark);
 }
 
+.quiz-for-who {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--blue-primary);
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
 .quiz-options {
     display: flex;
     flex-direction: column;
