@@ -126,7 +126,7 @@ const questions = [
         forWho: 'Vraag voor Tobias',
         question: 'Van welke voetbalclub wordt de baby later fan? ⚽',
         options: ['Ajax', 'Feyenoord', 'PSV', 'AZ'],
-        correct: null
+        correct: 0
     },
     {
         type: 'multiple',
@@ -134,12 +134,6 @@ const questions = [
         question: 'Wat gaan jullie de baby als eerste leren?',
         options: ['\"Oom Rutger\" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
         correct: 3
-    },
-    {
-        type: 'open',
-        forWho: 'Vraag voor iedereen',
-        question: 'Geef Ruby & Tobias je beste (of slechtste) opvoedtip! 😂',
-        answer: null
     }
 ];
 
@@ -315,8 +309,23 @@ function showResult() {
     document.getElementById('quiz-progress-fill').style.width = '100%';
 }
 
-// Start quiz on page load
-startQuiz();
+// ===== Quiz Password Gate =====
+const QUIZ_PASSWORD = 'gintonic';
+
+document.getElementById('quiz-login-btn').addEventListener('click', () => {
+    const input = document.getElementById('quiz-password').value.toLowerCase().trim();
+    if (input === QUIZ_PASSWORD) {
+        document.getElementById('quiz-login').hidden = true;
+        document.getElementById('quiz-container').hidden = false;
+        startQuiz();
+    } else {
+        document.getElementById('quiz-login-error').hidden = false;
+    }
+});
+
+document.getElementById('quiz-password').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('quiz-login-btn').click();
+});
 
 // ===== Page Navigation =====
 function navigateTo(pageId) {

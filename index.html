@@ -124,7 +124,15 @@
     <section id="quiz" class="quiz-section page" data-page="quiz">
         <h2>Baby Quiz 👶</h2>
         <p class="section-subtitle">Test je kennis en raad mee!</p>
-        <div class="quiz-container" id="quiz-container">
+        <div class="quiz-login" id="quiz-login">
+            <p>Voer het wachtwoord in om de quiz te starten:</p>
+            <div class="form-group">
+                <input type="password" id="quiz-password" placeholder="Wachtwoord...">
+            </div>
+            <button class="btn" id="quiz-login-btn">Start de quiz</button>
+            <p class="quiz-login-error" id="quiz-login-error" hidden>Verkeerd wachtwoord!</p>
+        </div>
+        <div class="quiz-container" id="quiz-container" hidden>
             <div class="quiz-progress">
                 <span id="quiz-progress-text">Vraag 1 van 8</span>
                 <div class="quiz-progress-bar">

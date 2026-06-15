@@ -376,6 +376,31 @@ h2 {
     box-shadow: var(--shadow);
 }
 
+.quiz-login {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+}
+
+.quiz-login p {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.quiz-login .form-group {
+    margin-bottom: 1rem;
+}
+
+.quiz-login-error {
+    color: #e57373 !important;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+}
+
 .quiz-progress {
     margin-bottom: 2rem;
 }
