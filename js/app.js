@@ -102,6 +102,12 @@ const questions = [
     },
     {
         type: 'multiple',
+        question: 'Tobias wil weten: gaat de kleine later Rocket League leuk vinden? 🚗⚽',
+        options: ['Sowieso, dat zit in de genen', 'Nee, hij wordt een FIFA-kind', 'Alleen als ie bij papa op schoot mag', 'Hij gaat het haten (sorry Tobias)'],
+        correct: 0
+    },
+    {
+        type: 'multiple',
         question: '🎯 Speciaal voor Rutger & Francis: wat gaan JULLIE de baby als eerste leren?',
         options: ['\"Oom Rutger\" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
         correct: 3
