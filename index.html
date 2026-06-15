@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babyshower Ruby & Tobias</title>
+    <link rel="stylesheet" href="css/style.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">👶</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#info">Info</a>
+            <a href="#rsvp">RSVP</a>
+            <a href="#quiz">Quiz</a>
+            <a href="#fotos">Foto's</a>
+        </div>
+        <button class="nav-toggle" aria-label="Menu">MENU</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">You're invited to the</p>
+            <h1 class="hero-title">Babyshower</h1>
+            <p class="hero-names">Ruby & Tobias</p>
+            <div class="hero-icon">🍼</div>
+            <p class="hero-date">3 juli 2026</p>
+        </div>
+    </section>
+
+    <!-- Countdown -->
+    <section class="countdown-section">
+        <h2>Nog even afwachten...</h2>
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">dagen</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">uur</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">min</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">sec</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section id="info" class="info-section">
+        <h2>De details</h2>
+        <div class="info-cards">
+            <div class="info-card">
+                <div class="info-icon">📅</div>
+                <h3>Wanneer</h3>
+                <p>Vrijdag 3 juli 2026</p>
+                <p>Vanaf 16:00 uur</p>
+                <p class="info-note">Later aansluiten voor het eten kan ook!</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">📍</div>
+                <h3>Waar</h3>
+                <p>Kerkstraat 162</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🎉</div>
+                <h3>Wat</h3>
+                <p>Gezelligheid, spelletjes, eten & het vieren dat er een kleine op komst is!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp-section">
+        <h2>Ben je erbij?</h2>
+        <p class="section-subtitle">Laat even weten of je komt!</p>
+        <form class="rsvp-form" id="rsvp-form">
+            <div class="form-group">
+                <label for="rsvp-name">Naam</label>
+                <select id="rsvp-name" required>
+                    <option value="">Kies je naam...</option>
+                    <option value="Francis">Francis</option>
+                    <option value="Rutger">Rutger</option>
+                    <option value="Tobias">Tobias</option>
+                    <option value="Ruby">Ruby</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rsvp-attending">Aanwezigheid</label>
+                <select id="rsvp-attending" required>
+                    <option value="">Maak een keuze...</option>
+                    <option value="ja-16">Ja! Ik ben er vanaf 16:00</option>
+                    <option value="ja-later">Ja! Maar ik kom wat later</option>
+                    <option value="nee">Helaas, ik kan niet</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rsvp-diet">Dieetwensen / allergiën</label>
+                <input type="text" id="rsvp-diet" placeholder="Bijv. vegetarisch, noten-allergie...">
+            </div>
+            <button type="submit" class="btn">Verstuur</button>
+        </form>
+        <div class="rsvp-success" id="rsvp-success" hidden>
+            <div class="success-icon">✓</div>
+            <p>Genoteerd! Tot 3 juli 🎉</p>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz-section">
+        <h2>Baby Quiz 👶</h2>
+        <p class="section-subtitle">Test je kennis en raad mee!</p>
+        <div class="quiz-container" id="quiz-container">
+            <div class="quiz-progress">
+                <span id="quiz-progress-text">Vraag 1 van 8</span>
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+                </div>
+            </div>
+            <div class="quiz-question" id="quiz-question">
+                <!-- Filled by JS -->
+            </div>
+            <div class="quiz-options" id="quiz-options">
+                <!-- Filled by JS -->
+            </div>
+            <button class="btn quiz-next" id="quiz-next" hidden>Volgende →</button>
+        </div>
+        <div class="quiz-result" id="quiz-result" hidden>
+            <h3 id="quiz-score"></h3>
+            <p id="quiz-message"></p>
+            <button class="btn" onclick="startQuiz()">Opnieuw spelen</button>
+        </div>
+    </section>
+
+    <!-- Foto Section -->
+    <section id="fotos" class="foto-section">
+        <h2>Foto's</h2>
+        <p class="section-subtitle">Deel je mooiste foto's van de dag!</p>
+        <div class="foto-upload">
+            <label for="foto-input" class="foto-upload-btn">
+                📷 Foto uploaden
+            </label>
+            <input type="file" id="foto-input" accept="image/*" multiple hidden>
+        </div>
+        <div class="foto-grid" id="foto-grid">
+            <!-- Filled by JS -->
+        </div>
+        <p class="foto-note" id="foto-note">Foto's worden lokaal opgeslagen in je browser.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Met liefde gemaakt voor Ruby, Tobias & hun kleine man 💙</p>
+    </footer>
+
+    <script src="js/app.js?v=1"></script>
+</body>
+</html>
