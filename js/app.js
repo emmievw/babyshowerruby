@@ -109,6 +109,12 @@ const questions = [
     },
     {
         type: 'multiple',
+        question: 'Van welke voetbalclub wordt de baby later fan? ⚽',
+        options: ['Ajax', 'Feyenoord', 'PSV', 'AZ'],
+        correct: null
+    },
+    {
+        type: 'multiple',
         question: '🎯 Speciaal voor Rutger & Francis: wat gaan JULLIE de baby als eerste leren?',
         options: ['\"Oom Rutger\" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
         correct: 3
