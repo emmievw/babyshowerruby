@@ -80,6 +80,13 @@ const questions = [
         correct: 1
     },
     {
+        type: 'image',
+        forWho: 'Vraag voor iedereen',
+        question: 'Hoe gaat het kindje eruitzien? 👀',
+        options: ['img/optie1.jpg', 'img/optie2.jpg'],
+        correct: null
+    },
+    {
         type: 'multiple',
         forWho: 'Vraag voor iedereen',
         question: 'Hoe denk je dat de baby gaat heten? 🤔',
@@ -162,6 +169,7 @@ function showQuestion() {
 
     questionEl.innerHTML = `<span class="quiz-for-who">${q.forWho}</span>${q.question}`;
     optionsEl.innerHTML = '';
+    optionsEl.classList.remove('quiz-options-image');
     nextBtn.hidden = true;
 
     if (q.type === 'multiple') {
@@ -170,6 +178,15 @@ function showQuestion() {
             btn.className = 'quiz-option';
             btn.textContent = opt;
             btn.addEventListener('click', () => selectOption(i));
+            optionsEl.appendChild(btn);
+        });
+    } else if (q.type === 'image') {
+        optionsEl.classList.add('quiz-options-image');
+        q.options.forEach((src, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'quiz-option-image';
+            btn.innerHTML = `<img src="${src}" alt="Optie ${i + 1}">`;
+            btn.addEventListener('click', () => selectImageOption(i));
             optionsEl.appendChild(btn);
         });
     } else if (q.type === 'open') {
@@ -191,6 +208,21 @@ function showQuestion() {
             if (e.key === 'Enter') submitOpenAnswer();
         });
     }
+}
+
+function selectImageOption(index) {
+    const q = questions[currentQuestion];
+    const options = document.querySelectorAll('.quiz-option-image');
+    const nextBtn = document.getElementById('quiz-next');
+
+    options.forEach((opt, i) => {
+        opt.style.pointerEvents = 'none';
+        if (i === index) opt.classList.add('selected');
+        else opt.style.opacity = '0.5';
+    });
+
+    quizAnswers.push({ question: q.question, answer: `Optie ${index + 1}` });
+    nextBtn.hidden = false;
 }
 
 function selectOption(index) {
