@@ -291,6 +291,14 @@ h2 {
     margin-top: 0.5rem;
 }
 
+.info-tba {
+    text-align: center;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 2rem;
+    font-size: 1rem;
+}
+
 /* ===== RSVP Section ===== */
 .rsvp-section {
     padding: 5rem 2rem;
@@ -372,6 +380,35 @@ h2 {
 .rsvp-success p {
     font-size: 1.2rem;
     color: var(--text-dark);
+}
+
+.rsvp-denied {
+    text-align: center;
+    max-width: 450px;
+    margin: 0 auto;
+    background: #fdecea;
+    border: 2px solid #e57373;
+    border-radius: var(--radius);
+    padding: 2rem;
+}
+
+.denied-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #e57373;
+    color: white;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.rsvp-denied p {
+    font-size: 1.2rem;
+    color: #c62828;
+    font-weight: 600;
 }
 
 /* ===== Quiz Section ===== */

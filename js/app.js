@@ -51,16 +51,25 @@ rsvpForm.addEventListener('submit', (e) => {
     rsvpData.push({ name, attending, diet, timestamp: new Date().toISOString() });
     localStorage.setItem('babyshower-rsvp', JSON.stringify(rsvpData));
 
-    // Show success
+    // Show success or denied
     rsvpForm.hidden = true;
-    rsvpSuccess.hidden = false;
+    if (attending === 'nee') {
+        document.getElementById('rsvp-denied').hidden = false;
+    } else {
+        rsvpSuccess.hidden = false;
+    }
 });
 
 // Check if already RSVP'd
 const existingRsvp = JSON.parse(localStorage.getItem('babyshower-rsvp') || '[]');
 if (existingRsvp.length > 0) {
     rsvpForm.hidden = true;
-    rsvpSuccess.hidden = false;
+    const lastRsvp = existingRsvp[existingRsvp.length - 1];
+    if (lastRsvp.attending === 'nee') {
+        document.getElementById('rsvp-denied').hidden = false;
+    } else {
+        rsvpSuccess.hidden = false;
+    }
 }
 
 // ===== Quiz =====
