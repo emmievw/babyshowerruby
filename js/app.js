@@ -78,9 +78,10 @@ const questions = [
         correct: 1
     },
     {
-        type: 'open',
-        question: 'Hoe denk je dat de baby gaat heten? Doe een gok! 🤔',
-        answer: null // No right answer, just for fun
+        type: 'multiple',
+        question: 'Hoe denk je dat de baby gaat heten? 🤔',
+        options: ['Ruben', 'Tobey', 'Roan', 'Tygo'],
+        correct: null // No right answer
     },
     {
         type: 'multiple',
@@ -184,12 +185,12 @@ function selectOption(index) {
     // Disable all options
     options.forEach((opt, i) => {
         opt.style.pointerEvents = 'none';
-        if (i === q.correct) opt.classList.add('correct');
-        if (i === index && i !== q.correct) opt.classList.add('wrong');
+        if (q.correct !== null && i === q.correct) opt.classList.add('correct');
+        if (q.correct !== null && i === index && i !== q.correct) opt.classList.add('wrong');
         if (i === index) opt.classList.add('selected');
     });
 
-    if (index === q.correct) score++;
+    if (q.correct !== null && index === q.correct) score++;
     quizAnswers.push({ question: q.question, answer: q.options[index] });
 
     nextBtn.hidden = false;
