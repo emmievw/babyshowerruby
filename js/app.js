@@ -134,6 +134,13 @@ const questions = [
         question: 'Wat gaan jullie de baby als eerste leren?',
         options: ['\"Oom Rutger\" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
         correct: 3
+    },
+    {
+        type: 'multiple',
+        forWho: 'Vraag voor iedereen',
+        question: 'Hoeveel regels code zitten er achter deze pagina? 💻',
+        options: ['Ongeveer 450', 'Ongeveer 750', 'Ongeveer 1150', 'Meer dan 2000'],
+        correct: 2
     }
 ];
 
@@ -145,8 +152,8 @@ function startQuiz() {
     currentQuestion = 0;
     score = 0;
     quizAnswers = [];
-    document.getElementById('quiz-container').hidden = false;
     document.getElementById('quiz-result').hidden = true;
+    document.getElementById('quiz-container').hidden = false;
     showQuestion();
 }
 
