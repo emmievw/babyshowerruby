@@ -121,15 +121,15 @@ h2 {
 
 .hero-secret {
     display: inline-block;
-    background: rgba(91, 143, 168, 0.12);
+    background: rgba(91, 143, 168, 0.15);
     color: var(--blue-dark);
-    padding: 0.6rem 1.5rem;
-    border-radius: 20px;
-    font-size: 1.15rem;
-    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 24px;
+    font-size: 1.3rem;
+    font-weight: 700;
     letter-spacing: 0.5px;
-    margin-bottom: 1.5rem;
-    border: 2px solid var(--blue-light);
+    margin-bottom: 1.8rem;
+    border: 2px solid var(--blue-primary);
 }
 
 .hero-subtitle {
