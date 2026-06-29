@@ -111,7 +111,7 @@ const questions = [
         type: 'multiple',
         forWho: 'Vraag voor iedereen',
         question: 'Hoe lang zijn Ruby en Tobias al samen?',
-        options: ['2 jaar', '4 jaar', '6 jaar', '8 jaar'],
+        options: ['Wie zijn dat?', '4 jaar', '6,5 jaar', '11 jaar'],
         correct: 1
     },
     {
@@ -126,6 +126,13 @@ const questions = [
         forWho: 'Vraag voor iedereen',
         question: 'Hoe gaat het kindje eruitzien? 👀',
         options: ['img/optie1.jpg', 'img/optie2.jpg'],
+        correct: null
+    },
+    {
+        type: 'shot',
+        forWho: 'Vraag voor Ruby',
+        question: 'Wie moet er een shotje nemen? 🥃',
+        options: ['Emma', 'Francis', 'Rutger', 'Tobias'],
         correct: null
     },
     {
@@ -157,6 +164,13 @@ const questions = [
         correct: 2
     },
     {
+        type: 'shot',
+        forWho: 'Vraag voor Ruby',
+        question: 'Wie moet er een shotje nemen? 🥃',
+        options: ['Emma', 'Francis', 'Rutger', 'Tobias'],
+        correct: null
+    },
+    {
         type: 'multiple',
         forWho: 'Vraag voor Tobias',
         question: 'Gaat de kleine later Rocket League leuk vinden? 🚗⚽',
@@ -174,19 +188,21 @@ const questions = [
         type: 'multiple',
         forWho: 'Vraag voor Rutger & Francis',
         question: 'Wat gaan jullie de baby als eerste leren?',
-        options: ['\"Oom Rutger\" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
+        options: ['"Oom Rutger" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
         correct: 3
     },
     {
-        type: 'multiple',        forWho: 'Vraag voor Ruby',
+        type: 'shot',
+        forWho: 'Vraag voor Ruby',
         question: 'Wie moet er een shotje nemen? 🥃',
-        options: ['Emma', 'Francis', 'Rutger', 'Tobias', 'Ikzelf'],
+        options: ['Emma', 'Francis', 'Rutger', 'Tobias'],
         correct: null
     },
     {
-        type: 'multiple',        forWho: 'Vraag voor iedereen',
+        type: 'multiple',
+        forWho: 'Vraag voor iedereen',
         question: 'Hoeveel regels code zitten er achter deze pagina? 💻',
-        options: ['Ongeveer 450', 'Ongeveer 750', 'Ongeveer 1150', 'Meer dan 2000'],
+        options: ['Ongeveer 750', 'Ongeveer 1150', 'Ongeveer 1500', 'Meer dan 2000'],
         correct: 2
     }
 ];
@@ -215,12 +231,24 @@ function showQuestion() {
     progressText.textContent = `Vraag ${currentQuestion + 1} van ${questions.length}`;
     progressFill.style.width = `${((currentQuestion) / questions.length) * 100}%`;
 
-    questionEl.innerHTML = `<span class="quiz-for-who">${q.forWho}</span>${q.question}`;
+    // Show "for who" card first, click to reveal question
+    questionEl.innerHTML = `<div class="quiz-forwho-card" id="forwho-card"><span class="quiz-forwho-emoji">🎯</span><p class="quiz-forwho-text">${q.forWho}</p><button class="btn btn-light quiz-reveal-btn">Laat de vraag zien →</button></div>`;
     optionsEl.innerHTML = '';
     optionsEl.classList.remove('quiz-options-image');
     nextBtn.hidden = true;
 
-    if (q.type === 'multiple') {
+    document.getElementById('forwho-card').addEventListener('click', () => {
+        revealQuestion(q);
+    });
+}
+
+function revealQuestion(q) {
+    const questionEl = document.getElementById('quiz-question');
+    const optionsEl = document.getElementById('quiz-options');
+
+    questionEl.innerHTML = `<span class="quiz-for-who">${q.forWho}</span>${q.question}`;
+
+    if (q.type === 'multiple' || q.type === 'shot') {
         q.options.forEach((opt, i) => {
             const btn = document.createElement('button');
             btn.className = 'quiz-option';
