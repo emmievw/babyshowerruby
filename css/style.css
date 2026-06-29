@@ -688,12 +688,16 @@ h2 {
 .quiz-overview {
     text-align: left;
     margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
 }
 
 .quiz-overview h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--text-dark);
+    grid-column: 1 / -1;
 }
 
 .quiz-overview-item {
@@ -701,7 +705,6 @@ h2 {
     gap: 0.75rem;
     padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 0.75rem;
     background: var(--cream);
     border-left: 3px solid var(--beige-dark);
 }
@@ -876,6 +879,10 @@ footer {
     }
 
     .info-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-overview {
         grid-template-columns: 1fr;
     }
 

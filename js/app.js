@@ -112,7 +112,7 @@ const questions = [
         forWho: 'Vraag voor iedereen',
         question: 'Hoe lang zijn Ruby en Tobias al samen?',
         options: ['Wie zijn dat?', '4 jaar', '6,5 jaar', '11 jaar'],
-        correct: 1
+        correct: 3
     },
     {
         type: 'multiple',
@@ -141,13 +141,6 @@ const questions = [
         question: 'Hoe denk je dat de baby gaat heten? 🤔',
         options: ['Ruben', 'Tobey', 'Roan', 'Tygo'],
         correct: null
-    },
-    {
-        type: 'multiple',
-        forWho: 'Vraag voor Ruby',
-        question: 'Wat is je guilty pleasure snack tijdens de zwangerschap?',
-        options: ['Augurken met pindakaas', 'Nutella uit de pot', 'Zure matjes', 'Chips met ijs'],
-        correct: 1
     },
     {
         type: 'multiple',
