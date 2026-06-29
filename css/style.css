@@ -422,6 +422,45 @@ h2 {
     font-size: 1.2rem;
     color: #c62828;
     font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+#rsvp-retry-btn {
+    margin-top: 0.5rem;
+}
+
+/* ===== Guest List ===== */
+.guest-list {
+    max-width: 450px;
+    margin: 2rem auto 0;
+    text-align: center;
+}
+
+.guest-list h3 {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.guest-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1.2rem;
+    background: var(--white);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+.guest-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.guest-time {
+    font-size: 0.9rem;
+    color: var(--blue-primary);
+    font-weight: 500;
 }
 
 /* ===== Quiz Section ===== */

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Babyshower Ruby & Tobias</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👶</text></svg>">
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
             <p class="hero-names">Ruby & Tobias</p>
             <div class="hero-icon">🍼</div>
             <p class="hero-date">3 juli 2026</p>
-            <p class="hero-intro">Er is een kleine op komst! En om dat te vieren is er een te gekke fissa: de mini babyshower. We starten om 16:00 en later aanschuiven is ook mogelijk.</p>
+            <p class="hero-intro">Er is een kleine op komst! En om dat te vieren is er een te gekke fissa: de mini babyshower. We starten om 16:30 met een borrel en later aanschuiven voor het eten kan ook.</p>
             <p class="hero-credits">Deze website is mogelijk gemaakt door een softwarebedrijf uit Leusden, waardoor er wat uurtjes verdwenen zijn van een consultant.</p>
             <div class="hero-buttons">
                 <button class="btn btn-light" onclick="navigateTo('info')">Bekijk de details</button>
@@ -71,9 +71,10 @@
             <div class="info-card">
                 <div class="info-icon">📅</div>
                 <h3>Wanneer</h3>
-                <p>Vrijdag 3 juli 2026</p>
-                <p>Vanaf 16:00 uur</p>
-                <p class="info-note">Later aansluiten voor het eten kan ook!</p>
+                <p>Donderdag 3 juli 2026</p>
+                <p>16:30 – Welkom voor de borrel 🥂</p>
+                <p>18:00 – Eten 🍝</p>
+                <p class="info-note">Later aansluiten bij het eten kan ook!</p>
             </div>
             <div class="info-card">
                 <div class="info-icon">📍</div>
@@ -82,10 +83,10 @@
                 <p>Putten</p>
             </div>
             <div class="info-card">
-                <div class="info-icon">🎉</div>
+                <div class="info-icon">🍝</div>
                 <h3>Wat</h3>
-                <p>Kijken hoeveel flessen wijn je kan atten.</p>
-                <p class="info-note">Grapjee... Gezelligheid, spelletjes, eten & het vieren dat er een kleine op komst is!</p>
+                <p>We eten in Italiaanse sfeer — dat past wel bij Ruby.</p>
+                <p class="info-note">Verder: gezelligheid, spelletjes & het vieren dat er een kleine op komst is!</p>
             </div>
         </div>
     </section>
@@ -110,8 +111,8 @@
                 <label for="rsvp-attending">Aanwezigheid</label>
                 <select id="rsvp-attending" required>
                     <option value="">Maak een keuze...</option>
-                    <option value="ja-16">Ja! Ik ben er vanaf 16:00</option>
-                    <option value="ja-later">Ja! Maar ik kom wat later</option>
+                    <option value="ja-1630">Ja! Ik ben er vanaf 16:30 (borrel)</option>
+                    <option value="ja-1800">Ja! Ik sluit aan bij het eten (18:00)</option>
                     <option value="nee">Helaas, ik kan niet</option>
                 </select>
             </div>
@@ -128,6 +129,11 @@
         <div class="rsvp-denied" id="rsvp-denied" hidden>
             <div class="denied-icon">✗</div>
             <p>Helaas, al je data ligt nu in Leusden 💻</p>
+            <button class="btn btn-light" id="rsvp-retry-btn" onclick="resetRsvp()">Toch komen? Geef je opnieuw op →</button>
+        </div>
+        <div class="guest-list" id="guest-list">
+            <h3>Wie is erbij? 🎉</h3>
+            <div id="guest-list-items"></div>
         </div>
     </section>
 
@@ -171,6 +177,6 @@
         <p>Met liefde gemaakt voor Ruby, Tobias & hun kleine man 💙</p>
     </footer>
 
-    <script src="js/app.js?v=3"></script>
+    <script src="js/app.js?v=4"></script>
 </body>
 </html>

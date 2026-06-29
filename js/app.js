@@ -12,7 +12,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 // ===== Countdown Timer =====
 function updateCountdown() {
-    const target = new Date('2026-07-03T16:00:00').getTime();
+    const target = new Date('2026-07-03T16:30:00').getTime();
     const now = new Date().getTime();
     const diff = target - now;
 
@@ -58,7 +58,39 @@ rsvpForm.addEventListener('submit', (e) => {
     } else {
         rsvpSuccess.hidden = false;
     }
+    updateGuestList();
 });
+
+// Reset RSVP (go back after saying no)
+function resetRsvp() {
+    // Remove last RSVP entry
+    const rsvpData = JSON.parse(localStorage.getItem('babyshower-rsvp') || '[]');
+    rsvpData.pop();
+    localStorage.setItem('babyshower-rsvp', JSON.stringify(rsvpData));
+
+    document.getElementById('rsvp-denied').hidden = true;
+    rsvpForm.hidden = false;
+    rsvpForm.reset();
+}
+
+// Guest list display
+function updateGuestList() {
+    const rsvpData = JSON.parse(localStorage.getItem('babyshower-rsvp') || '[]');
+    const attending = rsvpData.filter(r => r.attending !== 'nee');
+    const container = document.getElementById('guest-list-items');
+    const guestListSection = document.getElementById('guest-list');
+
+    if (attending.length === 0) {
+        guestListSection.hidden = true;
+        return;
+    }
+
+    guestListSection.hidden = false;
+    container.innerHTML = attending.map(r => {
+        const time = r.attending === 'ja-1630' ? 'vanaf 16:30' : 'vanaf 18:00';
+        return `<div class="guest-item"><span class="guest-name">${r.name}</span><span class="guest-time">${time}</span></div>`;
+    }).join('');
+}
 
 // Check if already RSVP'd
 const existingRsvp = JSON.parse(localStorage.getItem('babyshower-rsvp') || '[]');
@@ -71,6 +103,7 @@ if (existingRsvp.length > 0) {
         rsvpSuccess.hidden = false;
     }
 }
+updateGuestList();
 
 // ===== Quiz =====
 const questions = [
@@ -145,8 +178,13 @@ const questions = [
         correct: 3
     },
     {
-        type: 'multiple',
-        forWho: 'Vraag voor iedereen',
+        type: 'multiple',        forWho: 'Vraag voor Ruby',
+        question: 'Wie moet er een shotje nemen? 🥃',
+        options: ['Emma', 'Francis', 'Rutger', 'Tobias', 'Ikzelf'],
+        correct: null
+    },
+    {
+        type: 'multiple',        forWho: 'Vraag voor iedereen',
         question: 'Hoeveel regels code zitten er achter deze pagina? 💻',
         options: ['Ongeveer 450', 'Ongeveer 750', 'Ongeveer 1150', 'Meer dan 2000'],
         correct: 2
