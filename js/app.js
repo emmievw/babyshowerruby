@@ -146,7 +146,7 @@ const questions = [
         type: 'multiple',
         forWho: 'Vraag voor iedereen',
         question: 'Wie gaat er het vaakst oppassen denk je?',
-        options: ['Oma', 'Opa', 'Tante Francis', 'Oom Rutger'],
+        options: ['Baby Heberle kan prima zelf op pad', 'Tante Emma', 'Tante Francis', 'Oom Rutger'],
         correct: 2
     },
     {
