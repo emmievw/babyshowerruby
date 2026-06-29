@@ -119,6 +119,18 @@ h2 {
     animation: fadeInUp 1s ease;
 }
 
+.hero-secret {
+    display: inline-block;
+    background: rgba(91, 143, 168, 0.12);
+    color: var(--blue-dark);
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.2rem;
+}
+
 .hero-subtitle {
     font-size: 1.1rem;
     color: var(--text-light);
