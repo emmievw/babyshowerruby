@@ -185,13 +185,6 @@ const questions = [
         correct: 3
     },
     {
-        type: 'shot',
-        forWho: 'Vraag voor Ruby',
-        question: 'Wie moet er een shotje nemen? 🥃',
-        options: ['Emma', 'Francis', 'Rutger', 'Tobias'],
-        correct: null
-    },
-    {
         type: 'multiple',
         forWho: 'Vraag voor iedereen',
         question: 'Hoeveel regels code zitten er achter deze pagina? 💻',
