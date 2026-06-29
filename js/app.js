@@ -10,6 +10,19 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
+// ===== Firebase Config =====
+const firebaseConfig = {
+    apiKey: "AIzaSyAB4Am-ZCGo4OW4vSbqIKytULz82CI2rYM",
+    authDomain: "medewerker-van-de-maand.firebaseapp.com",
+    databaseURL: "https://medewerker-van-de-maand-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "medewerker-van-de-maand",
+    storageBucket: "medewerker-van-de-maand.firebasestorage.app",
+    messagingSenderId: "280239375500",
+    appId: "1:280239375500:web:49057b2d8d0acef343a7a9"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
 // ===== Countdown Timer =====
 function updateCountdown() {
     const target = new Date('2026-07-03T16:30:00').getTime();
@@ -46,10 +59,13 @@ rsvpForm.addEventListener('submit', (e) => {
     const attending = document.getElementById('rsvp-attending').value;
     const diet = document.getElementById('rsvp-diet').value;
 
-    // Store in localStorage
-    const rsvpData = JSON.parse(localStorage.getItem('babyshower-rsvp') || '[]');
-    rsvpData.push({ name, attending, diet, timestamp: new Date().toISOString() });
-    localStorage.setItem('babyshower-rsvp', JSON.stringify(rsvpData));
+    // Store in Firebase
+    db.ref('babyshower-rsvp/' + name).set({
+        name, attending, diet, timestamp: new Date().toISOString()
+    });
+
+    // Store locally to remember this user submitted
+    localStorage.setItem('babyshower-rsvp-sent', name);
 
     // Show success or denied
     rsvpForm.hidden = true;
@@ -58,52 +74,60 @@ rsvpForm.addEventListener('submit', (e) => {
     } else {
         rsvpSuccess.hidden = false;
     }
-    updateGuestList();
 });
 
 // Reset RSVP (go back after saying no)
 function resetRsvp() {
-    // Remove last RSVP entry
-    const rsvpData = JSON.parse(localStorage.getItem('babyshower-rsvp') || '[]');
-    rsvpData.pop();
-    localStorage.setItem('babyshower-rsvp', JSON.stringify(rsvpData));
-
+    localStorage.removeItem('babyshower-rsvp-sent');
     document.getElementById('rsvp-denied').hidden = true;
     rsvpForm.hidden = false;
     rsvpForm.reset();
 }
 
-// Guest list display
-function updateGuestList() {
-    const rsvpData = JSON.parse(localStorage.getItem('babyshower-rsvp') || '[]');
-    const attending = rsvpData.filter(r => r.attending !== 'nee');
-    const container = document.getElementById('guest-list-items');
-    const guestListSection = document.getElementById('guest-list');
+// Guest list display (realtime from Firebase)
+function listenToGuestList() {
+    db.ref('babyshower-rsvp').on('value', (snapshot) => {
+        const data = snapshot.val();
+        const container = document.getElementById('guest-list-items');
+        const guestListSection = document.getElementById('guest-list');
 
-    if (attending.length === 0) {
-        guestListSection.hidden = true;
-        return;
-    }
+        if (!data) {
+            guestListSection.hidden = true;
+            return;
+        }
 
-    guestListSection.hidden = false;
-    container.innerHTML = attending.map(r => {
-        const time = r.attending === 'ja-1630' ? 'vanaf 16:30' : 'vanaf 18:00';
-        return `<div class="guest-item"><span class="guest-name">${r.name}</span><span class="guest-time">${time}</span></div>`;
-    }).join('');
+        const guests = Object.values(data).filter(r => r.attending !== 'nee');
+
+        if (guests.length === 0) {
+            guestListSection.hidden = true;
+            return;
+        }
+
+        guestListSection.hidden = false;
+        container.innerHTML = guests.map(r => {
+            const time = r.attending === 'ja-1630' ? 'vanaf 16:30' : 'vanaf 18:00';
+            return `<div class="guest-item"><span class="guest-name">${r.name}</span><span class="guest-time">${time}</span></div>`;
+        }).join('');
+    });
 }
 
 // Check if already RSVP'd
-const existingRsvp = JSON.parse(localStorage.getItem('babyshower-rsvp') || '[]');
-if (existingRsvp.length > 0) {
-    rsvpForm.hidden = true;
-    const lastRsvp = existingRsvp[existingRsvp.length - 1];
-    if (lastRsvp.attending === 'nee') {
-        document.getElementById('rsvp-denied').hidden = false;
-    } else {
-        rsvpSuccess.hidden = false;
-    }
+const sentName = localStorage.getItem('babyshower-rsvp-sent');
+if (sentName) {
+    // Check Firebase for their current status
+    db.ref('babyshower-rsvp/' + sentName).once('value', (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+            rsvpForm.hidden = true;
+            if (data.attending === 'nee') {
+                document.getElementById('rsvp-denied').hidden = false;
+            } else {
+                rsvpSuccess.hidden = false;
+            }
+        }
+    });
 }
-updateGuestList();
+listenToGuestList();
 
 // ===== Quiz =====
 const questions = [
