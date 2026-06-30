@@ -168,6 +168,13 @@ const questions = [
     },
     {
         type: 'multiple',
+        forWho: 'Vraag voor Ruby',
+        question: 'Hoeveel luiers gebruikt een baby gemiddeld in het eerste jaar? 🧷',
+        options: ['Ongeveer 1.000', 'Ongeveer 2.500', 'Ongeveer 3.500'],
+        correct: 2
+    },
+    {
+        type: 'multiple',
         forWho: 'Vraag voor iedereen',
         question: 'Wie gaat er het vaakst oppassen denk je?',
         options: ['Baby Heberle kan prima zelf op pad', 'Tante Emma', 'Tante Francis', 'Oom Rutger'],
@@ -207,6 +214,19 @@ const questions = [
         question: 'Wat gaan jullie de baby als eerste leren?',
         options: ['"Oom Rutger" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
         correct: 3
+    },
+    {
+        type: 'shot',
+        forWho: 'Vraag voor Ruby',
+        question: 'Wie moet er een shotje nemen? 🥃',
+        options: ['Emma', 'Francis', 'Rutger', 'Tobias'],
+        correct: null
+    },
+    {
+        type: 'open',
+        forWho: 'Vraag voor Ruby',
+        question: 'Waar kijk je het meeste naar uit als moeder? 🥰',
+        correct: null
     },
     {
         type: 'multiple',
