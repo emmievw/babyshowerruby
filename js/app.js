@@ -139,6 +139,13 @@ const questions = [
         correct: 3
     },
     {
+        type: 'shot',
+        forWho: 'Vraag voor Ruby',
+        question: 'Wie moet er een shotje nemen? 🥃',
+        options: ['Emma', 'Francis', 'Rutger', 'Tobias'],
+        correct: null
+    },
+    {
         type: 'multiple',
         forWho: 'Vraag voor iedereen',
         question: 'Wat wordt het? 👶',
@@ -146,11 +153,32 @@ const questions = [
         correct: 1
     },
     {
+        type: 'multiple',
+        forWho: 'Vraag voor Tobias',
+        question: 'Wat gaat jouw signature move als vader worden?',
+        options: ['De baby overal mee naartoe nemen', 'Matching outfits', 'Elke dag 100 foto\'s maken', 'Alles baby-proofen wat niet nodig is'],
+        correct: 2
+    },
+    {
         type: 'image',
         forWho: 'Vraag voor iedereen',
         question: 'Hoe gaat het kindje eruitzien? 👀',
         options: ['img/optie1.jpg', 'img/optie2.jpg'],
         correct: null
+    },
+    {
+        type: 'multiple',
+        forWho: 'Vraag voor Ruby',
+        question: 'Hoeveel luiers gebruikt een baby gemiddeld in het eerste jaar? 🧷',
+        options: ['Ongeveer 1.000', 'Ongeveer 2.500', 'Ongeveer 3.500'],
+        correct: 2
+    },
+    {
+        type: 'multiple',
+        forWho: 'Vraag voor Tobias',
+        question: 'Wanneer gaat Ruby met zwangerschapsverlof? 📅',
+        options: ['20 juli', '24 juli', '30 juli'],
+        correct: 1
     },
     {
         type: 'shot',
@@ -168,10 +196,10 @@ const questions = [
     },
     {
         type: 'multiple',
-        forWho: 'Vraag voor Ruby',
-        question: 'Hoeveel luiers gebruikt een baby gemiddeld in het eerste jaar? 🧷',
-        options: ['Ongeveer 1.000', 'Ongeveer 2.500', 'Ongeveer 3.500'],
-        correct: 2
+        forWho: 'Vraag voor Tobias',
+        question: 'Gaat de kleine later Rocket League leuk vinden? 🚗⚽',
+        options: ['Sowieso, dat zit in de genen', 'Nee, hij wordt een FIFA-kind', 'Alleen als ie bij papa op schoot mag', 'Hij gaat het haten (sorry Tobias)'],
+        correct: 0
     },
     {
         type: 'multiple',
@@ -181,25 +209,10 @@ const questions = [
         correct: 2
     },
     {
-        type: 'multiple',
-        forWho: 'Vraag voor Tobias',
-        question: 'Wat gaat jouw signature move als vader worden?',
-        options: ['De baby overal mee naartoe nemen', 'Matching outfits', 'Elke dag 100 foto\'s maken', 'Alles baby-proofen wat niet nodig is'],
-        correct: 2
-    },
-    {
-        type: 'shot',
+        type: 'open',
         forWho: 'Vraag voor Ruby',
-        question: 'Wie moet er een shotje nemen? 🥃',
-        options: ['Emma', 'Francis', 'Rutger', 'Tobias'],
+        question: 'Waar kijk je het meeste naar uit als moeder? 🥰',
         correct: null
-    },
-    {
-        type: 'multiple',
-        forWho: 'Vraag voor Tobias',
-        question: 'Gaat de kleine later Rocket League leuk vinden? 🚗⚽',
-        options: ['Sowieso, dat zit in de genen', 'Nee, hij wordt een FIFA-kind', 'Alleen als ie bij papa op schoot mag', 'Hij gaat het haten (sorry Tobias)'],
-        correct: 0
     },
     {
         type: 'multiple',
@@ -209,13 +222,6 @@ const questions = [
         correct: 0
     },
     {
-        type: 'multiple',
-        forWho: 'Vraag voor Rutger & Francis',
-        question: 'Wat gaan jullie de baby als eerste leren?',
-        options: ['"Oom Rutger" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
-        correct: 3
-    },
-    {
         type: 'shot',
         forWho: 'Vraag voor Ruby',
         question: 'Wie moet er een shotje nemen? 🥃',
@@ -223,10 +229,11 @@ const questions = [
         correct: null
     },
     {
-        type: 'open',
-        forWho: 'Vraag voor Ruby',
-        question: 'Waar kijk je het meeste naar uit als moeder? 🥰',
-        correct: null
+        type: 'multiple',
+        forWho: 'Vraag voor Rutger & Francis',
+        question: 'Wat gaan jullie de baby als eerste leren?',
+        options: ['"Oom Rutger" zeggen', 'High-fives geven', 'Een slechte grap', 'Hoe je ouders om je vinger windt'],
+        correct: 3
     },
     {
         type: 'multiple',
